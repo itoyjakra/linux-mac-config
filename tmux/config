@@ -1,0 +1,42 @@
+# set terminal color
+set-option -sa terminal-overrides ",xterm*:Tc"
+
+# set flavor
+set -g @catppuccin_flavour 'mocha'
+
+# set prefix to '`', but keep 'b' too
+set -g prefix '`'
+bind-key '`' send-prefix
+set-option -g prefix2 C-b
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+set -g pane-base-index 1
+set-window-option -g pane-base-index 1
+set-option -g renumber-windows on
+
+# mouse on
+set -g mouse on
+
+# reload ~/.tmux.conf
+bind r source-file ~/.tmux.conf
+
+# colors
+set -g default-terminal "screen-256color"
+
+# make sure conda envs work properly in tmux
+set -g default-command "/bin/zsh"
+# set -g default-command "reattach-to-user-namespace -l $SHELL"
+
+set-window-option -g mode-keys vi
+#set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'dreamsofcode-io/catppuccin-tmux'
+
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
